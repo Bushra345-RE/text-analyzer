@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lexicon · AI-Powered Text Analyzer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="logo">Lx</span> Lexicon</div>
+  <p class="tag">Paste any text and see what it says.</p>
+</header>
+
+<main class="layout">
+  <section class="panel editor">
+    <h1>What are we reading?</h1>
+    <input id="title" type="text" placeholder="Give it a title (optional)" maxlength="80">
+    <textarea id="text" placeholder="Paste an essay, review, email, or notes here…"></textarea>
+    <div class="row">
+      <span id="counter" class="muted">0 words</span>
+      <div class="actions">
+        <button class="ghost" id="sample">Try a sample</button>
+        <button class="ghost" id="clear">Clear</button>
+        <button class="primary" id="go">Analyze text</button>
+      </div>
+    </div>
+    <p id="error" class="error" role="alert" hidden></p>
+  </section>
+
+  <section class="panel results" id="results" aria-live="polite">
+    <div class="empty" id="empty">
+      <div class="orb"></div>
+      <h2>Your analysis appears here</h2>
+      <p class="muted">Word counts, keywords, tone and reading time. Add some text and select Analyze text.</p>
+    </div>
+    <div id="output" hidden>
+      <div class="tiles" id="tiles"></div>
+      <div class="sent">
+        <div class="sent-head"><h3>Tone</h3><span id="sentLabel" class="pill"></span></div>
+        <div class="meter"><i id="needle"></i></div>
+        <div class="meter-scale"><span>Negative</span><span>Neutral</span><span>Positive</span></div>
+      </div>
+      <h3>Keywords</h3>
+      <div class="cloud" id="cloud"></div>
+      <h3>Most used words</h3>
+      <div class="bars" id="bars"></div>
+    </div>
+  </section>
+
+  <section class="panel history">
+    <div class="row"><h2>Saved analyses</h2><span class="muted" id="hcount"></span></div>
+    <ul id="history" class="hlist"></ul>
+  </section>
+</main>
+
+<div id="toast" class="toast" role="status"></div>
+<script src="app.js"></script>
+</body>
+</html>
